@@ -1,2 +1,2 @@
-# app-js
+# Portfolio
 Design Portfolio/website using Java script
