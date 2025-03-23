@@ -64,5 +64,74 @@ function DownloadFile(){
     document.body.removeChild(link);
 }
 
+/* contact form */
+const form = document.getElementById("contact-form");
+const responseMsg = document.getElementById("response-msg");
+
+form.addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  // Show spinner
+  responseMsg.textContent = ""; // Clear previous messages
+
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const result = await response.json();
+    if (result.success) {
+      responseMsg.style.color = "green";
+      responseMsg.textContent = "✅ Thank you! Your message has been sent.";
+      form.reset();
+    } else {
+      responseMsg.style.color = "red";
+      responseMsg.textContent = "❌ Failed to send message. Please try again.";
+    }
+  } catch (error) {
+    responseMsg.style.color = "red";
+    responseMsg.textContent = "❌ Something went wrong. Please try again.";
+    console.error(error);
+  } finally {
+    // Restore form
+    form.reset();
+  }
+});
+
+window.addEventListener("load", () => {
+    const form = document.getElementById("contact-form");
+    if (form) {
+      form.reset();
+    }
+  });
+
+  function toggleDetails(id, btn) {
+    const ul = document.getElementById(id);
+    const isVisible = ul.style.display === "block";
+
+    // Toggle visibility
+    ul.style.display = isVisible ? "none" : "block";
+
+    // Change button text
+    btn.textContent = isVisible ? "Read More" : "Read Less";
+
+    // Toggle light style
+    btn.classList.toggle("btn-light", !isVisible);
+  }
+
+  function toggleCoursework(btn) {
+    const coursework = btn.closest('.education-content').querySelector('.coursework');
+    const icon = btn.querySelector('i');
+  
+    const isVisible = coursework.style.display === "block";
+    coursework.style.display = isVisible ? "none" : "block";
+  
+    // Toggle icon direction
+    icon.classList.toggle("bx-chevron-down", isVisible);
+    icon.classList.toggle("bx-chevron-up", !isVisible);
+  }
 
 

@@ -15,6 +15,7 @@
     --second-bg-color: #323946;
     --text-color: #fff;
     --main-color: #0ef;
+    --shadow:#060606;
 
 }
 
@@ -45,7 +46,7 @@ body {
 }
 .logo {
     font-size: 2.5rem;
-    color: var(--text-color);
+    color: var(--main-color);
     font-weight: 600;
     cursor: default;
 }
@@ -80,7 +81,7 @@ section {
 .home-img img {
     width: 32vw;
     border-radius: 50%;
-    box-shadow: 0 0 25px var(--main-color);
+    box-shadow: 0 0 25px var(--shadow);
     animation: floatImage 4s ease-in-out infinite;
 }
 @keyframes floatImage{
@@ -149,7 +150,38 @@ span {
     transition: .5s ease;
 }
 .btn:hover{
-    box-shadow: none;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+.btn-light {
+    background: var(--second-bg-color);
+    color: var(--main-color);
+    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.3);
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 25px transparent;
+  }
+  
+  .btn-light:hover {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+  }
+
+.btn-group{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.btn-group a:nth-of-type(2){
+    background: var(--second-bg-color);
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 25px transparent;
+
+}
+.btn-group a:nth-of-type(2):hover{
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 25px transparent;
 }
 .about {
     display: flex;
@@ -188,6 +220,13 @@ span {
     gap: 1rem;
 
 }
+.details {
+    margin-top: 10px;
+    padding-left: 20px;
+    list-style-type: disc;
+    font-size: 1.5rem;
+    color: var(--main-color);
+  }
 .experience-container .experience-box {
 
     display: flex;
@@ -207,16 +246,42 @@ span {
     transform: scale(1.02);
 
 }
+.arrow-wrapper {
+    margin-top: 0.5rem;
+    text-align: center; /* Change to center if you prefer */
+    justify-content: center;
+  }
+  
+  .toggle-arrow {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2rem; /* Bigger arrow */
+    color: var(--main-color); /* Match your theme */
+    font-size: 1.5rem;
+  }
+  
+  .toggle-arrow i {
+    transition: transform 0.3s ease;
+  }
 .experience-box img {
     width:200px;
     height:100px;
 }
 .experience-box h3 {
     font-size: 2rem;
+    margin-top: 10px;
 }
 .experience-box p {
     font-size: 1.5rem;
-    margin: 1rem 0 3rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.experience-box ul li{
+    text-align: left;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 5px;
 }
 
 .education {
@@ -314,7 +379,7 @@ span {
 }
 
 ::-webkit-scrollbar{
-    width: 15px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -424,11 +489,24 @@ span {
 }
 .contact form textarea{
     resize: none;
+    margin-bottom: 1rem;
 }
 .contact form btn{
     cursor: pointer;
     margin-top: 2rem;
 }
+#response-msg {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  .error-msg {
+    font-size: 0.9rem;
+    margin-top: 4px;
+    display: block;
+  }
+  input:invalid, textarea:invalid {
+    outline-color: red;
+  }
 .footer{
     display: flex;
     justify-content: space-between;
@@ -475,16 +553,13 @@ span {
         padding: 2rem 3%;
     }
     section{
-        padding: 10rem 3% 2rem;
+        padding: 5rem 3% 2rem;
     }
     .experience{
-        padding-bottom: 7rem;
-    }
-    .education{
-        padding-bottom: 7rem;
+        padding-bottom: 5rem;
     }
     .project{
-        padding-bottom: 7rem;
+        padding-bottom: 5rem;
     }
     .contact{
         min-height: auto;
@@ -524,10 +599,24 @@ span {
         font-size: 2.6rem;
     }
     .education-item h3{
-        font-size: 2rem;
+        font-size: 2.6rem;
     }
     .education-item h4{
-        font-size: 1.2rem;
+        font-size: 1.6rem;
+    }
+    .education-items::before{
+        left: 7px;
+    }
+    .education-item:nth-child(even){
+        padding-right: 0;
+        text-align: left;
+    }
+    .education-item:nth-child(odd),
+    .education-item:nth-child(even){
+        padding-left: 37px;
+    }
+    .education-dot{
+        left: 0;
     }
     .home-content h1{
         font-size: 5rem;
