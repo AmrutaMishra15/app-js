@@ -54,15 +54,15 @@ const typed= new Typed('.multiple-text',{
     loop:true
 });
 
-function DownloadFile(){
-    const link = document.createElement('a');
-    link.target = '_blank';
-    link.href = './assets/resume.pdf'; 
-    link.download = 'resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
+// function DownloadFile(){
+//     const link = document.createElement('a');
+//     link.target = '_blank';
+//     link.href = './assets/resume.pdf'; 
+//     link.download = 'resume.pdf';
+//     document.body.appendChild(link);
+//     link.click();
+//     document.body.removeChild(link);
+// }
 
 /* contact form */
 const form = document.getElementById("contact-form");
